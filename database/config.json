@@ -1,0 +1,26 @@
+{
+  "development": {
+    "timezone": "+08:00",
+    "username": "root",
+    "password": "190629hwq-WYB",
+    "database": "egg_sql",
+    "host": "175.24.118.64",
+    "dialect": "mysql"
+  },
+  "test": {
+    "timezone": "+08:00",
+    "username": "root",
+    "password": "190629hwq-WYB",
+    "database": "egg_sql",
+    "host": "175.24.118.64",
+    "dialect": "mysql"
+  },
+  "production": {
+    "timezone": "+08:00",
+    "username": "root",
+    "password": "190629hwq-WYB",
+    "database": "egg_sql",
+    "host": "175.24.118.64",
+    "dialect": "mysql"
+  }
+}
