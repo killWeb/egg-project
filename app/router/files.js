@@ -5,8 +5,8 @@
  */
 module.exports = app => {
     const { router, controller } = app;
-    router.post('/files/list', controller.files.getList);
-    router.post('/files/add', controller.files.add);
-    router.post('/files/update', controller.files.update);
-    router.post('/files/delete', controller.files.delete);
+    router.post('/api/files/list', controller.files.getList);
+    router.post('/api/files/add', controller.files.add);
+    router.post('/api/files/update', controller.files.update);
+    router.post('/api/files/delete', controller.files.delete);
 };

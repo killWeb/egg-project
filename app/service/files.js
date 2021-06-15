@@ -4,12 +4,11 @@ const Service = require('egg').Service;
 
 class FilesService extends Service {
     async getList (req) {
-        const { name, type, page, size } = req.body;
+        const { name, type, currentPage, pageSize } = req.body;
         const { Files } = this.app.model;
         const { Op } = this.app.Sequelize;
-        let resultList = []
-        const limit = +size || 10;
-        const offset = (+page || 0) * limit;
+        const limit = +pageSize || 10;
+        const offset = (+currentPage || 1) * limit - limit;
         const query = {};
         if (name) {
             query.name = {
@@ -17,15 +16,21 @@ class FilesService extends Service {
             }
         }
         type && (query.type = type);
-        resultList = await Files.findAll({
+        const res = await Files.findAndCountAll({
             where: query,
-            attributes: ["name", "type", "path", "id"],
+            attributes: ["name", "type", "path", "id", "created_at"],
             order: [
-                ['id', 'ASC']
+                ['created_at', 'DESC']
             ],
             limit,
             offset
         });
+        const resultList = {
+            total: res.count,
+            list: res.rows,
+            currentPage,
+            pageSize
+        }
         return resultList;
     }
     async add (req) {
