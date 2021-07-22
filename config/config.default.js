@@ -70,6 +70,12 @@ module.exports = appInfo => {
         }
     };
 
+    config.cluster = {
+        listen: {
+            port: 9898
+        }
+    };
+
     return {
         ...config,
         ...userConfig,
