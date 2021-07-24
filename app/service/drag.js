@@ -55,9 +55,7 @@ class DragService extends Service {
             return null;
         }
         delete query.id;
-        const res = await data.update(query, {
-            fields: ['title', 'description', 'cover_image', 'json_data']
-        });
+        const res = await data.update(query);
         return res;
     }
     async delete (req) {
