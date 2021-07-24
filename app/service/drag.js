@@ -54,7 +54,9 @@ class DragService extends Service {
         if(!data) {
             return null;
         }
+        console.log('query', query);
         const res = await data.update(query);
+        console.log('res', res)
         return res;
     }
     async delete (req) {
