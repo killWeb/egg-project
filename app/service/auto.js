@@ -12,12 +12,12 @@ class AutoService extends Service {
                 stderr: "please set your project"
             }
         }
-        let shFilePath = "";
-        if (process.env.NODE_ENV === "development") {
-            shFilePath = `/Users/yibo.wei/pratice/${project}/sh/build.sh`;
-        } else {
-            shFilePath = `/work/wyb/project_files/${project}/sh/build.sh`;
-        }
+        let shFilePath = `/work/wyb/project_files/${project}/sh/build.sh`;
+        // if (process.env.NODE_ENV === "development") {
+        //     shFilePath = `/Users/yibo.wei/pratice/${project}/sh/build.sh`;
+        // } else {
+        //     shFilePath = `/work/wyb/project_files/${project}/sh/build.sh`;
+        // }
         const findRes = sh.find(shFilePath);
         if (findRes.code) {
             return {
@@ -26,7 +26,7 @@ class AutoService extends Service {
                 stderr: findRes.stderr
             }
         }
-        sh.chmod(755, shFilePath);
+        sh.chmod(777, shFilePath);
         sh.cd(`/Users/yibo.wei/pratice/${project}`);
         try {
             const execRes = await execAsync("sh/build.sh");
@@ -49,12 +49,12 @@ class AutoService extends Service {
                 stderr: "please set your project"
             }
         }
-        let shFilePath = "";
-        if (process.env.NODE_ENV === "development") {
-            shFilePath = `/Users/yibo.wei/pratice/${project}/sh/deploy.sh`;
-        } else {
-            shFilePath = `/work/wyb/project_files/${project}/sh/deploy.sh`;
-        }
+        let shFilePath = `/work/wyb/project_files/${project}/sh/deploy.sh`;
+        // if (process.env.NODE_ENV === "development") {
+        //     shFilePath = `/Users/yibo.wei/pratice/${project}/sh/deploy.sh`;
+        // } else {
+        //     shFilePath = `/work/wyb/project_files/${project}/sh/deploy.sh`;
+        // }
         const findRes = sh.find(shFilePath);
         if (findRes.code) {
             return {
@@ -63,7 +63,7 @@ class AutoService extends Service {
                 stderr: findRes.stderr
             }
         }
-        sh.chmod(755, shFilePath);
+        sh.chmod(777, shFilePath);
         sh.cd(`/Users/yibo.wei/pratice/${project}`);
         const execRes = await execAsync("sh/deploy.sh");
         return {
