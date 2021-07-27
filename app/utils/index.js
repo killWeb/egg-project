@@ -2,11 +2,10 @@
 function execAsync(command, options = {}, stdoutHandler) {
     return new Promise((resolve, reject) => {
         const sh = require("shelljs");
-        const child = sh.exec(command, options, function (code, stdout, stderr) {
-            if (code) {
-                reject(new Error(stderr));
-                return;
-            }
+        const child = sh.exec(command, {
+            silent: true,
+            ...options
+        }, function (code, stdout, stderr) {
             resolve({code, stdout, stderr});
         });
         child.stdout.on('data', (data) => {
