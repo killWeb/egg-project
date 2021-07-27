@@ -21,6 +21,7 @@ class AutoService extends Service {
                 stderr: findRes.stderr
             }
         }
+        sh.chmod(755, shFilePath);
         const execRes = await execAsync(shFilePath);
         return {
             code: execRes.code,
@@ -44,6 +45,7 @@ class AutoService extends Service {
                 stderr: findRes.stderr
             }
         }
+        sh.chmod(755, shFilePath);
         const execRes = await execAsync(shFilePath);
         return {
             code: execRes.code,
