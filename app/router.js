@@ -7,6 +7,7 @@
 const dragRouter = require('./router/drag.js');
 const filesRouter = require('./router/files.js');
 const usersRouter = require('./router/users.js');
+const autoRouter = require('./router/auto.js');
 
 module.exports = app => {
     // //启动之前创建数据表
@@ -20,6 +21,7 @@ module.exports = app => {
     //         alter: true
     //     });
     // });
+    autoRouter(app);
     dragRouter(app);
     filesRouter(app);
     usersRouter(app);
