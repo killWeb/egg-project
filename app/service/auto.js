@@ -13,11 +13,6 @@ class AutoService extends Service {
             }
         }
         let shFilePath = `/work/wyb/project_files/${project}/sh/build.sh`;
-        // if (process.env.NODE_ENV === "development") {
-        //     shFilePath = `/Users/yibo.wei/pratice/${project}/sh/build.sh`;
-        // } else {
-        //     shFilePath = `/work/wyb/project_files/${project}/sh/build.sh`;
-        // }
         const findRes = sh.find(shFilePath);
         if (findRes.code) {
             return {
@@ -27,7 +22,7 @@ class AutoService extends Service {
             }
         }
         sh.chmod(777, shFilePath);
-        sh.cd(`/Users/yibo.wei/pratice/${project}`);
+        sh.cd(`/work/wyb/project_files/${project}`);
         try {
             const execRes = await execAsync("sh/build.sh");
             return {
@@ -50,11 +45,6 @@ class AutoService extends Service {
             }
         }
         let shFilePath = `/work/wyb/project_files/${project}/sh/deploy.sh`;
-        // if (process.env.NODE_ENV === "development") {
-        //     shFilePath = `/Users/yibo.wei/pratice/${project}/sh/deploy.sh`;
-        // } else {
-        //     shFilePath = `/work/wyb/project_files/${project}/sh/deploy.sh`;
-        // }
         const findRes = sh.find(shFilePath);
         if (findRes.code) {
             return {
@@ -64,7 +54,7 @@ class AutoService extends Service {
             }
         }
         sh.chmod(777, shFilePath);
-        sh.cd(`/Users/yibo.wei/pratice/${project}`);
+        sh.cd(`/work/wyb/project_files/${project}`);
         const execRes = await execAsync("sh/deploy.sh");
         return {
             code: execRes.code,
