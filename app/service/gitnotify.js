@@ -8,8 +8,9 @@ class GitnotifyService extends Service {
     async handlerNotify(req) {
         console.log('req', req);
         console.log('reqbody', req.body);
-        const { repository } = req.body;
-        const { name } = JSON.parse(repository);
+        const { payload } = req.body;
+        const { repository } = JSON.parse(payload);
+        const { name } = repository;
         if (!name) {
             return {
                 stderr: "please set your project"
