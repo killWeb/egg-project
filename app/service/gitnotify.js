@@ -6,6 +6,8 @@ const sh = require("shelljs");
 
 class GitnotifyService extends Service {
     async handlerNotify(req) {
+        console.log('req', req);
+        console.log('reqbody', req.body);
         const { repository } = req.body;
         const { name } = JSON.parse(repository);
         if (!name) {

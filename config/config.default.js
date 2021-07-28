@@ -16,7 +16,7 @@ module.exports = appInfo => {
     config.keys = appInfo.name + '_yibo_wei_19970112';
 
     // add your middleware config here
-    config.middleware = [ 'errorHandler' ];
+    config.middleware = [ 'errorHandler', 'log' ];
 
     // add your user config here
     const userConfig = {
