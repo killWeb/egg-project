@@ -1,5 +1,5 @@
 # 设置基础镜像,如果本地没有该镜像，会从Docker.io服务器pull镜像
-FROM node:10.13.0
+FROM node:14.4.0
 
 # 配置环境变量
 ENV NODE_ENV production
