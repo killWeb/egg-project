@@ -27,4 +27,4 @@ COPY . /usr/src/app
 # 暴露容器端口
 EXPOSE 9898
 
-CMD npm start:server
+CMD npm run start:server
