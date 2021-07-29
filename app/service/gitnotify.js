@@ -68,4 +68,5 @@ class GitnotifyService extends Service {
     }
 }
 
+
 module.exports = GitnotifyService;
