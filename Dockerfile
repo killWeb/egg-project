@@ -19,7 +19,7 @@ COPY package.json /usr/src/app/package.json
 
 # 安装npm依赖(使用淘宝的镜像源)
 # 如果使用的境外服务器，无需使用淘宝的镜像源，即改为`RUN npm i`。
-RUN npm i --registry=https://registry.npm.taobao.org
+RUN npm i
 
 # 拷贝所有源代码到工作目
 COPY . /usr/src/app
@@ -27,4 +27,4 @@ COPY . /usr/src/app
 # 暴露容器端口
 EXPOSE 9898
 
-CMD npm run start
+CMD npm run start:docker
