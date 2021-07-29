@@ -27,4 +27,4 @@ COPY . /usr/src/app
 # 暴露容器端口
 EXPOSE 9898
 
-CMD npm run start:docker
+CMD npm run start
