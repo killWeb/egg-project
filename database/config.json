@@ -2,25 +2,25 @@
   "development": {
     "timezone": "+08:00",
     "username": "root",
-    "password": "190629hwq-WYB",
+    "password": "432321webWEB",
     "database": "egg_sql",
-    "host": "175.24.118.64",
+    "host": "1.116.243.13",
     "dialect": "mysql"
   },
   "test": {
     "timezone": "+08:00",
     "username": "root",
-    "password": "190629hwq-WYB",
+    "password": "432321webWEB",
     "database": "egg_sql",
-    "host": "175.24.118.64",
+    "host": "1.116.243.13",
     "dialect": "mysql"
   },
   "production": {
     "timezone": "+08:00",
     "username": "root",
-    "password": "190629hwq-WYB",
+    "password": "432321webWEB",
     "database": "egg_sql",
-    "host": "175.24.118.64",
+    "host": "1.116.243.13",
     "dialect": "mysql"
   }
 }

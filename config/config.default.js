@@ -49,10 +49,10 @@ module.exports = appInfo => {
             bigNumberStrings: true
         },
         database: 'egg_sql',
-        host: '175.24.118.64',
+        host: '1.116.243.13',
         port: 3306,
         username: 'root',
-        password: '190629hwq-WYB',
+        password: '432321webWEB',
         // 中国时区
         timezone: '+08:00',
         define: {
