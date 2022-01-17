@@ -81,4 +81,3 @@ module.exports = appInfo => {
         ...userConfig,
     };
 };
-console.log("prod");
