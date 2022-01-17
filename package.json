@@ -28,7 +28,7 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start:server": "egg-scripts start --daemon --title=egg-server-egg-project --ignore-stderr",
+    "start:server": "egg-scripts start --daemon --title=egg-server-egg-project --ignore-stderr --env=prod",
     "start:docker": "egg-scripts start --title=egg-server-egg-project --ignore-stderr",
     "stop:server": "egg-scripts stop --title=egg-server-egg-project",
     "start": "egg-bin dev",

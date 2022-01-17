@@ -81,4 +81,4 @@ module.exports = appInfo => {
         ...userConfig,
     };
 };
-console.log("default");
+console.log("prod");
