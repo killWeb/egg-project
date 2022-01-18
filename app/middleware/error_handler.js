@@ -4,10 +4,10 @@ module.exports = () => {
             await next();
         } catch (error) {
             ctx.app.emit('error', error, ctx);
-            ctx.status = error.status;
+            console.log("error", error.message);
             ctx.body = {
-                code: error.status,
-                info: error.message
+                code: error.status || 500,
+                info: error.message || "Server is error"
             }
         }
     }

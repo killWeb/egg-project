@@ -1,5 +1,5 @@
 module.exports = () => {
-    return async function errorHandler(ctx, next) {
+    return async function log(ctx, next) {
         await next();
         const url = ctx.request.url;
         const method = ctx.request.method;

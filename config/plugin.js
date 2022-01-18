@@ -10,7 +10,12 @@ const sequelize = {
     enable: true,
     package: 'egg-sequelize'
 }
+const jwt = {
+    enable: true,
+    package: 'egg-jwt',
+}
 module.exports = {
     cors,
-    sequelize
+    sequelize,
+    jwt
 };

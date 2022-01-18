@@ -16,12 +16,7 @@ module.exports = appInfo => {
     config.keys = appInfo.name + '_yibo_wei_19970112';
 
     // add your middleware config here
-    config.middleware = [ 'errorHandler', 'log' ];
-
-    // add your user config here
-    const userConfig = {
-    // myAppName: 'egg',
-    };
+    config.middleware = [ 'auth', 'log', 'errorHandler' ];
 
     // 跨域配置
     config.cors = {
@@ -76,8 +71,17 @@ module.exports = appInfo => {
         }
     };
 
+    config.jwt = {
+        secret: '19970112'
+    };
+
+    // add your user config here
+    const userConfig = {
+        // myAppName: 'egg',
+    };
+
     return {
         ...config,
-        ...userConfig,
+        ...userConfig
     };
 };
