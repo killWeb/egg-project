@@ -10,7 +10,9 @@ class UserController extends Controller {
     }
     async logout() {
         this.ctx.removeToken();
-        this.ctx.redirect("https://ixuexi.plus/");
+        this.ctx.body = {
+            code: 200
+        }
     }
     async region() {
         const data = await this.service.user.region(this.ctx.request);
