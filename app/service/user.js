@@ -57,7 +57,11 @@ class UserService extends Service {
     }
     async info (req) {
         const { User } = this.app.model;
-        const id = this.ctx.cookies.get("nj_userId");
+        const id = this.ctx.cookies.get("nj_userId", { httpOnly: false, signed: false });
+        if(!id) return {
+            code: 401,
+            info: "用户未登录"
+        };
         const findRes = await User.findOne({
             attributes: ["userName", "userCode", "id"],
             where: {
