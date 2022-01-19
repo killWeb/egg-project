@@ -24,6 +24,7 @@ class UserService extends Service {
             code: 401,
             info: "密码错误"
         }
+        this.ctx.setToken({ id: findRes.id });
         return {
             id: findRes.id,
             userCode: findRes.userCode,
@@ -53,6 +54,21 @@ class UserService extends Service {
             userCode
         });
         return createRes;
+    }
+    async info (req) {
+        const { User } = this.app.model;
+        const id = this.ctx.cookies.get("nj_userId");
+        const findRes = await User.findOne({
+            attributes: ["userName", "userCode", "id"],
+            where: {
+                id
+            }
+        });
+        if(findRes === null) return {
+            code: 401,
+            info: "用户不存在"
+        };
+        return findRes;
     }
 }
 

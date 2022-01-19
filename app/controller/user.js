@@ -5,7 +5,6 @@ const Controller = require('egg').Controller;
 class UserController extends Controller {
     async login() {
         const data = await this.service.user.login(this.ctx.request);
-        this.ctx.setToken({ id: data.id });
         this.ctx.body = data;
     }
     async logout() {
@@ -16,6 +15,10 @@ class UserController extends Controller {
     }
     async region() {
         const data = await this.service.user.region(this.ctx.request);
+        this.ctx.body = data;
+    }
+    async info() {
+        const data = await this.service.user.info(this.ctx.request);
         this.ctx.body = data;
     }
 }

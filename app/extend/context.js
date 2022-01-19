@@ -8,7 +8,7 @@ module.exports = {
         const { app } = this;
         let { id } = data;
         const token = app.jwt.sign(data, app.config.jwt.secret, { expiresIn: '12h' });
-        const cookieConfig = { maxAge: 1000 * 3600 * 24 * 7, httpOnly: true, overwrite: true, signed: false };
+        const cookieConfig = { maxAge: 1000 * 3600 * 24 * 7, httpOnly: false, overwrite: true, signed: false };
 
         this.cookies.set('nj_token', token, cookieConfig);
         this.cookies.set('nj_userId', id, cookieConfig);
@@ -25,8 +25,6 @@ module.exports = {
         const verifyResult = await new Promise(resolve => {
             if (!token) return resolve({ verify: false, message: "Token is empty"});
             app.jwt.verify(token, app.config.jwt.secret, (err, decoded) => {
-                console.log("err", err);
-                console.log("decoded", decoded);
                 if (!err) return resolve({ verify: true, message: decoded });
                 if (err.name !== 'TokenExpiredError' || !userId) return resolve({ verify: false, message: JSON.stringify(err.message) });
                 this.setToken({ userId }); // 刷新token
