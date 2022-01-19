@@ -25,15 +25,16 @@ module.exports = {
         const verifyResult = await new Promise(resolve => {
             if (!token) return resolve({ verify: false, message: "Token is empty"});
             app.jwt.verify(token, app.config.jwt.secret, (err, decoded) => {
+                console.log("err", err);
+                console.log("decoded", decoded);
                 if (!err) return resolve({ verify: true, message: decoded });
                 if (err.name !== 'TokenExpiredError' || !userId) return resolve({ verify: false, message: JSON.stringify(err.message) });
                 this.setToken({ userId }); // 刷新token
                 resolve({ verify: true, message: userId });
             });
         });
-
         if (!verifyResult.verify) return false;
-        if (userId !== verifyResult.message.userId) return false;
+        if (+userId !== +verifyResult.message.id) return false;
 
         this.request.body.userId = userId;
         return true;
