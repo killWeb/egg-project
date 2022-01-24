@@ -37,14 +37,13 @@ class DragService extends Service {
     async getDetail (req) {
         const { id } = req.query;
         const { Drag } = this.app.model;
-        console.log('query', id)
         const data = await Drag.findByPk(+id);
         return data;
     }
     async add (req) {
         const { Drag } = this.app.model;
-        const query = req.body;
-        const res = await Drag.create(query);
+        const data = req.body;
+        const res = await Drag.create(data);
         return res;
     }
     async update (req) {

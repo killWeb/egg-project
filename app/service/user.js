@@ -3,6 +3,38 @@
 const Service = require('egg').Service;
 
 class UserService extends Service {
+    async getList (req) {
+        const { userName, userCode, id, currentPage, pageSize } = req.query;
+        const { User } = this.app.model;
+        const { Op } = this.app.Sequelize;
+        const limit = +pageSize || 10;
+        const offset = (+currentPage || 1) * limit - limit;
+        const query = {};
+        if (userName) {
+            query.userName = {
+                [Op.like]: `%${userName}%`
+            }
+        }
+        userName && (query.userName = userName);
+        userCode && (query.userCode = userCode);
+        id && (query.id = id);
+        const res = await User.findAndCountAll({
+            where: query,
+            attributes: ["id", "userName", "userCode", "created_at", "updated_at"],
+            order: [
+                ['updated_at', 'DESC']
+            ],
+            limit,
+            offset
+        });
+        const resultList = {
+            total: res.count,
+            list: res.rows,
+            currentPage,
+            pageSize
+        }
+        return resultList;
+    }
     async login (req) {
         const { User } = this.app.model;
         const { userName, password, userCode } = req.body;

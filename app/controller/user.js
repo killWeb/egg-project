@@ -3,6 +3,10 @@
 const Controller = require('egg').Controller;
 
 class UserController extends Controller {
+    async getList() {
+        const list = await this.service.user.getList(this.ctx.request);
+        this.ctx.body = list;
+    }
     async login() {
         const data = await this.service.user.login(this.ctx.request);
         this.ctx.body = data;

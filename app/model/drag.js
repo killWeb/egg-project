@@ -26,6 +26,10 @@ module.exports = app => {
             type: STRING(10),
             comment: "作者"
         },
+        authorId: {
+            type: STRING(10),
+            comment: "作者ID"
+        },
         jsonData: {
             type: STRING(10000),
             comment: "json数据"
