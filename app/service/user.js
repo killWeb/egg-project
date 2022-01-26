@@ -20,7 +20,7 @@ class UserService extends Service {
         id && (query.id = id);
         const res = await User.findAndCountAll({
             where: query,
-            attributes: ["id", "userName", "userCode", "created_at", "updated_at"],
+            attributes: ["id", "userName", "userCode", "created_at", "updated_at", "online_time"],
             order: [
                 ['updated_at', 'DESC']
             ],
@@ -94,17 +94,40 @@ class UserService extends Service {
             code: 401,
             info: "用户未登录"
         };
-        const findRes = await User.findOne({
-            attributes: ["userName", "userCode", "id"],
-            where: {
-                id
-            }
-        });
+        const findRes = await User.findByPk(id);
         if(findRes === null) return {
             code: 401,
             info: "用户不存在"
         };
-        return findRes;
+        const { userCode, userName } = findRes;
+        return { 
+            id: findRes.id, 
+            userCode, 
+            userName 
+        };
+    }
+    async onlineTime(req) {
+        const { User } = this.app.model;
+        const { during } = req.body;
+        const id = this.ctx.cookies.get("nj_userId", { httpOnly: false, signed: false });
+        if(!id) return {
+            code: 401,
+            info: "用户未登录"
+        };
+        const findRes = await User.findByPk(id);
+        if(findRes === null) return {
+            code: 401,
+            info: "用户不存在"
+        };
+        console.log(findRes.onlineTime);
+        const onlineTime = (findRes.onlineTime || 0) + during;
+        console.log("onlineTime", onlineTime);
+        const updateRes = await findRes.update({
+            onlineTime
+        });
+        return {
+            code: 200
+        };
     }
 }
 

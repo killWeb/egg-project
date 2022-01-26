@@ -25,6 +25,10 @@ class UserController extends Controller {
         const data = await this.service.user.info(this.ctx.request);
         this.ctx.body = data;
     }
+    async onlineTime() {
+        const data = await this.service.user.onlineTime(this.ctx.request);
+        this.ctx.body = data;
+    }
 }
 
 module.exports = UserController;

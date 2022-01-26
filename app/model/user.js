@@ -35,6 +35,10 @@ module.exports = app => {
                 const time = this.getDataValue('updated_at');
                 return new Date(time).getTime()
             }
+        },
+        onlineTime: {
+            type: INTEGER(20),
+            comment: "在线时长"
         }
     });
     return User;
