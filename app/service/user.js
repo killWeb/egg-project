@@ -20,7 +20,7 @@ class UserService extends Service {
         id && (query.id = id);
         const res = await User.findAndCountAll({
             where: query,
-            attributes: ["id", "userName", "userCode", "created_at", "updated_at", "online_time"],
+            attributes: ["id", "userName", "userCode", "created_at", "updated_at", "onlineTime"],
             order: [
                 ['updated_at', 'DESC']
             ],
@@ -119,9 +119,7 @@ class UserService extends Service {
             code: 401,
             info: "用户不存在"
         };
-        console.log(findRes.onlineTime);
         const onlineTime = (findRes.onlineTime || 0) + during;
-        console.log("onlineTime", onlineTime);
         const updateRes = await findRes.update({
             onlineTime
         });
