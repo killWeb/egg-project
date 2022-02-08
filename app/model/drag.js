@@ -34,6 +34,10 @@ module.exports = app => {
             type: STRING(10000),
             comment: "json数据"
         },
+        designWidth: {
+            type: INTEGER(10),
+            comment: "设计稿宽度"
+        },
         created_at: {
             type: DATE,
             get() {

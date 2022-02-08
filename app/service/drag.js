@@ -19,7 +19,7 @@ class DragService extends Service {
         id && (query.id = id);
         const res = await Drag.findAndCountAll({
             where: query,
-            attributes: ["title", "author", "description", "cover_image", "id", "created_at", "updated_at"],
+            attributes: ["title", "author", "description", "cover_image", "id", "design_width", "created_at", "updated_at"],
             order: [
                 ['updated_at', 'DESC']
             ],
